@@ -104,7 +104,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<Response<Page<TaskDTO>>> getById(@RequestParam("titulo") Optional<String> titulo,
+    public ResponseEntity<Response<Page<TaskDTO>>> get(@RequestParam("titulo") Optional<String> titulo,
                                                            @RequestParam("numero") Optional<Long> numero,
                                                            @RequestParam("user") Optional<Long> id_usuario,
                                                            @RequestParam("status") Optional<String> status,
