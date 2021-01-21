@@ -143,7 +143,8 @@ public class TaskController {
         dto.setDescricao(t.getDescricao());
         dto.setTitulo(t.getTitulo());
         dto.setPriority(t.getPriority().getValue());
-
+        dto.setStatus(t.getStatus().getValue());
+        
         return dto;
     }
 }
