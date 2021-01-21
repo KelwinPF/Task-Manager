@@ -54,16 +54,18 @@ public class TaskController {
         if (!t.isPresent()) {
             result.addError(new ObjectError("Task", "Tarefa não encontrada"));
         }
-
         if (result.hasErrors()) {
             result.getAllErrors().forEach(r -> response.getErrors().add(r.getDefaultMessage()));
 
             return ResponseEntity.badRequest().body(response);
         }
+        TaskEnum tsk = t.get().getStatus();
 
         Task saved = service.save(this.convertDtoToEntity(dto));
 
-        response.setData(this.convertEntityToDto(saved));
+        saved.setStatus(tsk);
+        
+        response.setData(this.convertEntityToDto(service.save(saved)));
         return ResponseEntity.ok().body(response);
     }
 
@@ -144,7 +146,7 @@ public class TaskController {
         dto.setTitulo(t.getTitulo());
         dto.setPriority(t.getPriority().getValue());
         dto.setStatus(t.getStatus().getValue());
-        
+
         return dto;
     }
 }
