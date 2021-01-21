@@ -64,7 +64,7 @@ public class TaskController {
         Task saved = service.save(this.convertDtoToEntity(dto));
 
         saved.setStatus(tsk);
-        
+
         response.setData(this.convertEntityToDto(service.save(saved)));
         return ResponseEntity.ok().body(response);
     }
